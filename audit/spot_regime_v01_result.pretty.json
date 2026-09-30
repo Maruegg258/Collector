@@ -22,30 +22,16 @@
       "missing": []
     },
     "eth_1d_meta": {
-      "archives": 93,
-      "checksummed": 93,
+      "archives": 94,
+      "checksummed": 94,
       "prelisting_missing": 2,
-      "postlisting_missing": [
-        "https://data.binance.vision/data/futures/um/daily/klines/ETHUSDT/1d/ETHUSDT-1d-2026-09-14.zip"
-      ],
-      "plugin_direct_supplement": {
-        "open_time": 1789344000000,
-        "close_time": 1789430399999,
-        "source": "Binance plugin direct USD-M futures kline"
-      }
+      "postlisting_missing": []
     },
     "btc_1d_meta": {
-      "archives": 93,
-      "checksummed": 93,
+      "archives": 94,
+      "checksummed": 94,
       "prelisting_missing": 4,
-      "postlisting_missing": [
-        "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1d/BTCUSDT-1d-2026-09-14.zip"
-      ],
-      "plugin_direct_supplement": {
-        "open_time": 1789344000000,
-        "close_time": 1789430399999,
-        "source": "Binance plugin direct USD-M futures kline"
-      }
+      "postlisting_missing": []
     },
     "eth_1d_gaps": [],
     "btc_1d_gaps": [],
