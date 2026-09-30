@@ -1,12 +1,7 @@
 name: HYPE Monitor Payload Proxy
 
 on:
-  schedule:
-    - cron: '2,7 */4 * * *'
   workflow_dispatch:
-  push:
-    paths:
-      - '.github/workflows/monitor-payload-proxy.yml'
 
 permissions:
   contents: read
