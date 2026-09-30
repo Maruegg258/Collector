@@ -127,7 +127,7 @@ class StorageLifecycle:
                 "usage_ratio": None,
                 "db_files_bytes": None,
                 "note": (
-                    "PostgreSQL volume utilization must be monitored by Railway metrics; "
+                    "PostgreSQL volume utilization must be monitored by the database hosting platform; "
                     "the stateless collector cannot inspect the database service volume."
                 ),
             }
@@ -213,7 +213,7 @@ class StorageLifecycle:
                     "raw_compaction": "12H_RAW_PLUS_DURABLE_4H_ARCHIVE",
                     "archive_retention": "INDEFINITE",
                     "gap_metadata_retention": "INDEFINITE" if self.config.gap_retention_days is None else f"{self.config.gap_retention_days}D",
-                    "postgres_capacity_source": "RAILWAY_METRICS",
+                    "postgres_capacity_source": "EXTERNAL_PLATFORM_METRICS",
                     "spot_integrity_policy": "HYPE_PROTOCOL_V1_2_1_WINDOW_SPECIFIC_MATERIALITY",
                     "critical_action": "ALERT_AND_REVIEW_VOLUME_OR_RETENTION",
                     "note": (

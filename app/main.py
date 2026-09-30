@@ -48,7 +48,7 @@ lease: CollectorLeaseCoordinator | None = None
 if STORAGE_BACKEND in {"postgres", "postgresql"}:
     if not DATABASE_URL:
         raise RuntimeError("DATABASE_URL is required for PostgreSQL continuity leases")
-    instance_id = os.getenv("RAILWAY_DEPLOYMENT_ID") or os.getenv("RAILWAY_REPLICA_ID") or f"local-{uuid.uuid4().hex}"
+    instance_id = os.getenv("COLLECTOR_INSTANCE_ID") or os.getenv("HOSTNAME") or f"local-{uuid.uuid4().hex}"
     lease = CollectorLeaseCoordinator(DATABASE_URL, instance_id)
 
 collector = HypeSpotCollector(store, coin=HYPE_COIN, ws_url=HYPERLIQUID_WS_URL, lease=lease)

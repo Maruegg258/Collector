@@ -2,6 +2,11 @@ name: HYPE Monitor Payload Proxy
 
 on:
   workflow_dispatch:
+    inputs:
+      base_url:
+        description: "Collector base URL (optional when repository variable COLLECTOR_BASE_URL is set)"
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -10,10 +15,20 @@ jobs:
   proxy:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      BASE_URL: ${{ inputs.base_url || vars.COLLECTOR_BASE_URL }}
     steps:
+      - name: Validate endpoint configuration
+        run: |
+          set -euo pipefail
+          test -n "$BASE_URL" || {
+            echo "::error::Provide workflow input base_url or repository variable COLLECTOR_BASE_URL"
+            exit 1
+          }
+          BASE_URL="${BASE_URL%/}"
+          echo "BASE_URL=$BASE_URL" >> "$GITHUB_ENV"
+
       - name: Fetch exact-boundary canonical HYPE payload
-        env:
-          BASE_URL: https://collector-stateless-production.up.railway.app
         run: |
           set -euo pipefail
           BOUNDARY=$(python - <<'PY'
